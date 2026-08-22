@@ -1,54 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- ========== Attendance Views ========== -->
-
-    <!-- Attendance Tree View -->
-    <record id="view_attendance_tree" model="ir.ui.view">
-        <field name="name">hr.attendance.tree.dayflow</field>
-        <field name="model">hr.attendance</field>
-        <field name="arch" type="xml">
-            <tree string="Attendance">
-                <field name="employee_id"/>
-                <field name="check_in"/>
-                <field name="check_out"/>
-                <field name="worked_hours" widget="float_time"/>
-            </tree>
-        </field>
-    </record>
-
-    <!-- Attendance Form View -->
-    <record id="view_attendance_form" model="ir.ui.view">
-        <field name="name">hr.attendance.form.dayflow</field>
-        <field name="model">hr.attendance</field>
-        <field name="arch" type="xml">
-            <form string="Attendance">
-                <sheet>
-                    <group>
-                        <group>
-                            <field name="employee_id"/>
-                            <field name="check_in"/>
-                        </group>
-                        <group>
-                            <field name="check_out"/>
-                            <field name="worked_hours" widget="float_time"/>
-                        </group>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <!-- Attendance Action -->
-    <record id="action_attendance" model="ir.actions.act_window">
+    <!-- Action: employee's own attendance, scoped by user -->
+    <record id="action_dayflow_my_attendance" model="ir.actions.act_window">
         <field name="name">My Attendance</field>
         <field name="res_model">hr.attendance</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('employee_id.user_id', '=', uid)]</field>
     </record>
 
-    <!-- Attendance Menu under Dayflow root -->
-    <menuitem id="menu_dayflow_attendance"
-              name="Attendance"
+    <!-- Action: HR view of all attendance -->
+    <record id="action_dayflow_all_attendance" model="ir.actions.act_window">
+        <field name="name">All Attendance</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- My Attendance — visible to all employees -->
+    <menuitem id="menu_dayflow_attendance_my"
+              name="My Attendance"
               parent="dayflow_hrms.menu_dayflow_root"
-              action="action_attendance"
+              action="action_dayflow_my_attendance"
               sequence="10"/>
+
+    <!-- All Attendance — HR only -->
+    <menuitem id="menu_dayflow_attendance_all"
+              name="All Attendance"
+              parent="dayflow_hrms.menu_dayflow_root"
+              action="action_dayflow_all_attendance"
+              groups="dayflow_hrms.group_dayflow_hr"
+              sequence="11"/>
 </odoo>
