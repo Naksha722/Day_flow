@@ -111,8 +111,7 @@
             <field name="state">refuse</field>
         </record>
 
-        <!-- ===== Payroll: add once Samarth's dayflow.payroll model is merged ===== -->
-        <!--
+        <!-- ===== Payroll (Samarth's dayflow.payroll model) ===== -->
         <record id="demo_payroll_1" model="dayflow.payroll">
             <field name="employee_id" ref="demo_employee_1"/>
             <field name="basic_salary">45000</field>
@@ -120,7 +119,27 @@
             <field name="deductions">2000</field>
             <field name="month">August 2026</field>
         </record>
-        -->
+        <record id="demo_payroll_2" model="dayflow.payroll">
+            <field name="employee_id" ref="demo_employee_2"/>
+            <field name="basic_salary">38000</field>
+            <field name="allowances">3000</field>
+            <field name="deductions">1500</field>
+            <field name="month">August 2026</field>
+        </record>
+        <record id="demo_payroll_3" model="dayflow.payroll">
+            <field name="employee_id" ref="demo_employee_3"/>
+            <field name="basic_salary">52000</field>
+            <field name="allowances">6000</field>
+            <field name="deductions">2500</field>
+            <field name="month">August 2026</field>
+        </record>
+        <record id="demo_payroll_4" model="dayflow.payroll">
+            <field name="employee_id" ref="demo_employee_4"/>
+            <field name="basic_salary">40000</field>
+            <field name="allowances">4000</field>
+            <field name="deductions">1800</field>
+            <field name="month">August 2026</field>
+        </record>
 
     </data>
 </odoo>
