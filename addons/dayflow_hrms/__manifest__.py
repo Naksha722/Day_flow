@@ -10,9 +10,9 @@
         'views/dayflow_menu.xml',
         # --- avaneesh ---
         # (added in a later step: security/ir.model.access_avaneesh.csv, views/attendance_views.xml, views/leave_views.xml)
-        # --- lavanya ---
+        # --- security / authentication ---
         'security/security_rules.xml',
-        'security/ir.model.access_lavanya.csv',
+        'security/ir.model.access_security.csv',
         'views/auth_templates.xml',
         # --- samarth ---
         # --- naksha ---
