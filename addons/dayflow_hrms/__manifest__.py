@@ -9,15 +9,15 @@
         'security/security_groups.xml',
         'views/dayflow_menu.xml',
         # --- avaneesh ---
-        'security/ir.model.access_avaneesh.csv',
+        'security/access_avaneesh.csv',
         'views/attendance_views.xml',
         'views/leave_views.xml',
         # --- lavanya ---
         'security/security_rules.xml',
-        'security/ir.model.access_security.csv',
+        'security/access_security.csv',
         'views/auth_templates.xml',
         # --- samarth ---
-        'security/ir.model.access_samarth.csv',
+        'security/access_samarth.csv',
         'views/payroll_views.xml',
         # --- naksha ---
         'views/dashboard_menu.xml',
