@@ -5,6 +5,8 @@
         <t t-call="web.layout">
             <t t-set="head">
                 <link rel="stylesheet" type="text/css" href="/dayflow_hrms/static/src/css/dashboard.css"/>
+                <!-- Auto-refresh every 30 seconds for live data -->
+                <meta http-equiv="refresh" content="30"/>
             </t>
             <t t-set="body_classname" t-value="'dayflow-body'"/>
 
@@ -55,6 +57,7 @@
                         <a class="dayflow-btn" href="/odoo/attendances">Check Attendance</a>
                         <a class="dayflow-btn" href="/odoo/time-off/new">Apply Leave</a>
                         <a class="dayflow-btn" href="/odoo/employees/my-profile">My Profile</a>
+                        <a class="dayflow-btn dayflow-btn-refresh" href="/dayflow/dashboard">↻ Refresh</a>
                     </div>
                 </div>
 

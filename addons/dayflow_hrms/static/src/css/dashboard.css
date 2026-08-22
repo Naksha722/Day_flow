@@ -133,6 +133,17 @@
     background: #5847e6;
 }
 
+.dayflow-btn-refresh {
+    background: transparent;
+    color: #6b5bff !important;
+    border: 2px solid #6b5bff;
+}
+
+.dayflow-btn-refresh:hover {
+    background: #6b5bff;
+    color: #fff !important;
+}
+
 /* ---------- HR employee table ---------- */
 .dayflow-employee-table {
     width: 100%;
