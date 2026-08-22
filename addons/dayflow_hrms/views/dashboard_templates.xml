@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="dashboard_template" name="Dayflow Dashboard">
+        <t t-call="web.layout">
+            <t t-set="head">
+                <link rel="stylesheet" type="text/css" href="/dayflow_hrms/static/src/css/dashboard.css"/>
+            </t>
+            <t t-set="body_classname" t-value="'dayflow-body'"/>
+
+            <div class="dayflow-wrap">
+                <div class="dayflow-brand">DAYFLOW</div>
+
+                <div class="dayflow-greeting">
+                    Good morning<t t-if="employee">, <t t-esc="employee.name"/></t> 👋
+                    <span t-if="is_hr and not viewing_other_employee" class="dayflow-hr-badge">HR view</span>
+                </div>
+
+                <!-- ===================== Personal cards ===================== -->
+                <div class="dayflow-cards">
+                    <div t-attf-class="dayflow-card dayflow-card-attendance status-#{attendance_status}">
+                        <div class="dayflow-card-title">Attendance</div>
+                        <div class="dayflow-card-value"><t t-esc="attendance_label"/></div>
+                    </div>
+
+                    <div class="dayflow-card dayflow-card-leave">
+                        <div class="dayflow-card-title">Leave</div>
+                        <div class="dayflow-card-value">
+                            <t t-esc="pending_leave_count"/> Pending
+                        </div>
+                    </div>
+
+                    <div class="dayflow-card dayflow-card-payroll">
+                        <div class="dayflow-card-title">Payroll</div>
+                        <div class="dayflow-card-value">
+                            ₹<t t-esc="'{:,.0f}'.format(net_salary or 0.0)"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== Recent activity ===================== -->
+                <div class="dayflow-section">
+                    <div class="dayflow-section-title">Recent Activity</div>
+                    <ul class="dayflow-activity-list">
+                        <li t-foreach="recent_activity" t-as="item">
+                            ✓ <t t-esc="item['text']"/>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ===================== Quick actions ===================== -->
+                <div class="dayflow-section">
+                    <div class="dayflow-section-title">Quick Actions</div>
+                    <div class="dayflow-actions">
+                        <a class="dayflow-btn" href="/odoo/attendances">Check Attendance</a>
+                        <a class="dayflow-btn" href="/odoo/time-off/new">Apply Leave</a>
+                        <a class="dayflow-btn" href="/odoo/employees/my-profile">My Profile</a>
+                    </div>
+                </div>
+
+                <!-- ===================== HR / Admin variant ===================== -->
+                <div class="dayflow-section" t-if="is_hr and employee_rows">
+                    <div class="dayflow-section-title">Employees</div>
+                    <table class="dayflow-employee-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Job Title</th>
+                                <th>Attendance</th>
+                                <th>Pending Leave</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_rows" t-as="row">
+                                <td><t t-esc="row['name']"/></td>
+                                <td><t t-esc="row['job_title']"/></td>
+                                <td>
+                                    <span t-attf-class="dayflow-pill status-#{row['attendance_status']}">
+                                        <t t-esc="row['attendance_status']"/>
+                                    </span>
+                                </td>
+                                <td><t t-esc="row['pending_leave_count']"/></td>
+                                <td>
+                                    <a t-attf-href="/dayflow/dashboard/employee/#{row['id']}" class="dayflow-link">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+</odoo>

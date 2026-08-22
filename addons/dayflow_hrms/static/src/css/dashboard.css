@@ -1,0 +1,182 @@
+.dayflow-body {
+    background: #f4f6f9;
+}
+
+.dayflow-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #2b2f38;
+}
+
+.dayflow-brand {
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #6b5bff;
+    margin-bottom: 4px;
+}
+
+.dayflow-greeting {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dayflow-hr-badge {
+    font-size: 12px;
+    font-weight: 600;
+    background: #6b5bff;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Cards ---------- */
+.dayflow-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 720px) {
+    .dayflow-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dayflow-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border: 1px solid #eceef2;
+}
+
+.dayflow-card-title {
+    font-size: 13px;
+    color: #7a8091;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.dayflow-card-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.dayflow-card-attendance.status-present .dayflow-card-value { color: #1a9c5b; }
+.dayflow-card-attendance.status-absent .dayflow-card-value { color: #c9432c; }
+.dayflow-card-attendance.status-half_day .dayflow-card-value { color: #c98a1a; }
+.dayflow-card-attendance.status-leave .dayflow-card-value { color: #6b5bff; }
+
+/* ---------- Sections ---------- */
+.dayflow-section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eceef2;
+}
+
+.dayflow-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.dayflow-activity-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dayflow-activity-list li {
+    padding: 6px 0;
+    color: #444a58;
+    font-size: 14px;
+    border-bottom: 1px solid #f2f3f6;
+}
+
+.dayflow-activity-list li:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Quick actions ---------- */
+.dayflow-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dayflow-btn {
+    display: inline-block;
+    background: #6b5bff;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.15s ease;
+}
+
+.dayflow-btn:hover {
+    background: #5847e6;
+}
+
+/* ---------- HR employee table ---------- */
+.dayflow-employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dayflow-employee-table th {
+    text-align: left;
+    color: #7a8091;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 10px;
+    border-bottom: 2px solid #eceef2;
+}
+
+.dayflow-employee-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #f2f3f6;
+}
+
+.dayflow-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #eceef2;
+    color: #444a58;
+    text-transform: capitalize;
+}
+
+.dayflow-pill.status-present { background: #e4f6ec; color: #1a9c5b; }
+.dayflow-pill.status-absent { background: #fbe8e5; color: #c9432c; }
+.dayflow-pill.status-half_day { background: #fbf1e0; color: #c98a1a; }
+.dayflow-pill.status-leave { background: #ece9ff; color: #6b5bff; }
+
+.dayflow-link {
+    color: #6b5bff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dayflow-link:hover {
+    text-decoration: underline;
+}
