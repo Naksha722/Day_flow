@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Dashboard URL Action -->
-    <record id="action_dashboard" model="ir.actions.act_url">
+
+    <!-- Plain URL action -> fastest path in Odoo 19 for a server-rendered page -->
+    <record id="action_dayflow_dashboard_url" model="ir.actions.act_url">
         <field name="name">Dashboard</field>
         <field name="url">/dayflow/dashboard</field>
         <field name="target">self</field>
     </record>
 
-    <!-- Dashboard Menu — first item under Dayflow root -->
+    <!-- First/default child menu under Avaneesh's root app menu -->
     <menuitem id="menu_dayflow_dashboard"
               name="Dashboard"
               parent="dayflow_hrms.menu_dayflow_root"
-              action="action_dashboard"
+              action="action_dayflow_dashboard_url"
               sequence="1"/>
+
 </odoo>
