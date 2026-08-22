@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== Attendance Views ========== -->
+
+    <!-- Attendance Tree View -->
+    <record id="view_attendance_tree" model="ir.ui.view">
+        <field name="name">hr.attendance.tree.dayflow</field>
+        <field name="model">hr.attendance</field>
+        <field name="arch" type="xml">
+            <tree string="Attendance">
+                <field name="employee_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="worked_hours" widget="float_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Attendance Form View -->
+    <record id="view_attendance_form" model="ir.ui.view">
+        <field name="name">hr.attendance.form.dayflow</field>
+        <field name="model">hr.attendance</field>
+        <field name="arch" type="xml">
+            <form string="Attendance">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="check_in"/>
+                        </group>
+                        <group>
+                            <field name="check_out"/>
+                            <field name="worked_hours" widget="float_time"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Attendance Action -->
+    <record id="action_attendance" model="ir.actions.act_window">
+        <field name="name">My Attendance</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Attendance Menu under Dayflow root -->
+    <menuitem id="menu_dayflow_attendance"
+              name="Attendance"
+              parent="dayflow_hrms.menu_dayflow_root"
+              action="action_attendance"
+              sequence="10"/>
+</odoo>
