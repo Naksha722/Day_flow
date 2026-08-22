@@ -7,9 +7,7 @@
             <field name="name">Demo HR Admin</field>
             <field name="login">hr@dayflow.demo</field>
             <field name="email">hr@dayflow.demo</field>
-            <field name="password">hr123</field>
             <field name="x_email_verified">True</field>
-            <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_hr'))]"/>
         </record>
         <record id="demo_employee_hr" model="hr.employee">
             <field name="name">Demo HR Admin</field>
@@ -21,9 +19,7 @@
             <field name="name">Employee One</field>
             <field name="login">emp1@dayflow.demo</field>
             <field name="email">emp1@dayflow.demo</field>
-            <field name="password">emp123</field>
             <field name="x_email_verified">True</field>
-            <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
         <record id="demo_employee_1" model="hr.employee">
             <field name="name">Employee One</field>
@@ -34,9 +30,7 @@
             <field name="name">Employee Two</field>
             <field name="login">emp2@dayflow.demo</field>
             <field name="email">emp2@dayflow.demo</field>
-            <field name="password">emp123</field>
             <field name="x_email_verified">True</field>
-            <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
         <record id="demo_employee_2" model="hr.employee">
             <field name="name">Employee Two</field>
@@ -47,9 +41,7 @@
             <field name="name">Employee Three</field>
             <field name="login">emp3@dayflow.demo</field>
             <field name="email">emp3@dayflow.demo</field>
-            <field name="password">emp123</field>
             <field name="x_email_verified">True</field>
-            <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
         <record id="demo_employee_3" model="hr.employee">
             <field name="name">Employee Three</field>
@@ -60,38 +52,31 @@
             <field name="name">Employee Four</field>
             <field name="login">emp4@dayflow.demo</field>
             <field name="email">emp4@dayflow.demo</field>
-            <field name="password">emp123</field>
             <field name="x_email_verified">True</field>
-            <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
         <record id="demo_employee_4" model="hr.employee">
             <field name="name">Employee Four</field>
             <field name="user_id" ref="demo_user_emp4"/>
         </record>
 
-        <!-- ===== Attendance: present / half-day / absent / present ===== -->
-        <!-- Employee 1: present today, full day -->
+        <!-- ===== Attendance ===== -->
         <record id="demo_attendance_1" model="hr.attendance">
             <field name="employee_id" ref="demo_employee_1"/>
             <field name="check_in" eval="datetime.datetime.now().replace(hour=9, minute=0, second=0)"/>
             <field name="check_out" eval="datetime.datetime.now().replace(hour=18, minute=0, second=0)"/>
         </record>
-        <!-- Employee 2: half-day (short hours) -->
         <record id="demo_attendance_2" model="hr.attendance">
             <field name="employee_id" ref="demo_employee_2"/>
             <field name="check_in" eval="datetime.datetime.now().replace(hour=13, minute=0, second=0)"/>
             <field name="check_out" eval="datetime.datetime.now().replace(hour=16, minute=0, second=0)"/>
         </record>
-        <!-- Employee 3: absent (no attendance record) -->
-        <!-- Employee 4: present today -->
         <record id="demo_attendance_4" model="hr.attendance">
             <field name="employee_id" ref="demo_employee_4"/>
             <field name="check_in" eval="datetime.datetime.now().replace(hour=9, minute=15, second=0)"/>
             <field name="check_out" eval="datetime.datetime.now().replace(hour=17, minute=45, second=0)"/>
         </record>
 
-        <!-- ===== Leave requests: pending / approved / rejected ===== -->
-        <!-- Employee 1: pending leave -->
+        <!-- ===== Leave requests ===== -->
         <record id="demo_leave_pending" model="hr.leave">
             <field name="employee_id" ref="demo_employee_1"/>
             <field name="name">Family function</field>
@@ -99,7 +84,6 @@
             <field name="request_date_to" eval="(DateTime.today() + timedelta(days=4)).strftime('%Y-%m-%d')"/>
             <field name="state">confirm</field>
         </record>
-        <!-- Employee 2: approved leave (past) -->
         <record id="demo_leave_approved" model="hr.leave">
             <field name="employee_id" ref="demo_employee_2"/>
             <field name="name">Fever</field>
@@ -107,7 +91,6 @@
             <field name="request_date_to" eval="(DateTime.today() - timedelta(days=1)).strftime('%Y-%m-%d')"/>
             <field name="state">validate</field>
         </record>
-        <!-- Employee 3: rejected leave -->
         <record id="demo_leave_rejected" model="hr.leave">
             <field name="employee_id" ref="demo_employee_3"/>
             <field name="name">Extended personal trip</field>
@@ -116,7 +99,7 @@
             <field name="state">refuse</field>
         </record>
 
-        <!-- ===== Payroll (Samarth's dayflow.payroll model) ===== -->
+        <!-- ===== Payroll ===== -->
         <record id="demo_payroll_1" model="dayflow.payroll">
             <field name="employee_id" ref="demo_employee_1"/>
             <field name="basic_salary">45000</field>
