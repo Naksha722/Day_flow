@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_dayflow_root" name="Dayflow" sequence="1" web_icon="dayflow_hrms,static/description/icon.png"/>
+</odoo>
