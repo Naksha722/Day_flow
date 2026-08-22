@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Employee Dashboard Template -->
+    <template id="dashboard_template" name="Dayflow Dashboard">
+        <t t-call="web.html_container">
+            <t t-attf-class="o_dayflow_dashboard">
+                <head>
+                    <link rel="stylesheet" href="/dayflow_hrms/static/src/css/dashboard.css"/>
+                </head>
+                <body>
+                    <div class="dayflow-wrapper">
+
+                        <!-- Greeting Header -->
+                        <div class="dayflow-greeting">
+                            <h1 class="greeting-text">
+                                Good morning, <t t-esc="employee.name if employee else user.name"/> 👋
+                            </h1>
+                            <p class="greeting-sub" t-if="is_hr">
+                                <span class="badge bg-primary">HR Admin</span>
+                            </p>
+                            <p class="greeting-sub" t-else="">
+                                <span class="badge bg-secondary">Employee</span>
+                            </p>
+                        </div>
+
+                        <!-- ===== HR / Admin Dashboard ===== -->
+                        <div t-if="is_hr" class="dayflow-section">
+                            <!-- HR Summary Cards -->
+                            <div class="dayflow-cards-row">
+                                <div class="dayflow-card card-attendance">
+                                    <div class="card-icon">👥</div>
+                                    <div class="card-value" t-esc="total_employees"/>
+                                    <div class="card-label">Total Employees</div>
+                                </div>
+                                <div class="dayflow-card card-present">
+                                    <div class="card-icon">✅</div>
+                                    <div class="card-value" t-esc="present_today"/>
+                                    <div class="card-label">Present Today</div>
+                                </div>
+                                <div class="dayflow-card card-absent">
+                                    <div class="card-icon">❌</div>
+                                    <div class="card-value" t-esc="absent_today"/>
+                                    <div class="card-label">Absent Today</div>
+                                </div>
+                                <div class="dayflow-card card-leave">
+                                    <div class="card-icon">🏖️</div>
+                                    <div class="card-value" t-esc="on_leave_today"/>
+                                    <div class="card-label">On Leave</div>
+                                </div>
+                            </div>
+
+                            <!-- Employee List Table -->
+                            <div class="dayflow-panel">
+                                <h3 class="panel-title">Employee Overview</h3>
+                                <table class="table dayflow-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Job Title</th>
+                                            <th>Department</th>
+                                            <th>Today's Status</th>
+                                            <th>Pending Leaves</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="employee_list" t-as="emp">
+                                            <tr>
+                                                <td t-esc="emp['name']"/>
+                                                <td t-esc="emp['job']"/>
+                                                <td t-esc="emp['department']"/>
+                                                <td>
+                                                    <t t-if="emp['attendance_status'] == 'present'">
+                                                        <span class="badge bg-success">Present</span>
+                                                    </t>
+                                                    <t t-elif="emp['attendance_status'] == 'absent'">
+                                                        <span class="badge bg-danger">Absent</span>
+                                                    </t>
+                                                    <t t-elif="emp['attendance_status'] == 'half_day'">
+                                                        <span class="badge bg-warning text-dark">Half-day</span>
+                                                    </t>
+                                                    <t t-elif="emp['attendance_status'] == 'leave'">
+                                                        <span class="badge bg-info">On Leave</span>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <span t-if="emp['pending_leaves'] > 0"
+                                                          class="badge bg-warning text-dark"
+                                                          t-esc="emp['pending_leaves']"/>
+                                                    <span t-else="" class="text-muted">0</span>
+                                                </td>
+                                                <td>
+                                                    <a t-attf-href="/web#id=#{emp['id']}&amp;model=hr.employee&amp;view_type=form"
+                                                       class="btn btn-sm btn-outline-primary">View</a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Pending Leave Approvals -->
+                            <div class="dayflow-panel" t-if="pending_leaves">
+                                <h3 class="panel-title">Pending Leave Requests</h3>
+                                <table class="table dayflow-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Employee</th>
+                                            <th>Leave Type</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Days</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="pending_leaves" t-as="leave">
+                                            <tr>
+                                                <td t-esc="leave.employee_id.name"/>
+                                                <td t-esc="leave.holiday_status_id.name if leave.holiday_status_id else ''"/>
+                                                <td t-esc="leave.request_date_from"/>
+                                                <td t-esc="leave.request_date_to"/>
+                                                <td t-esc="leave.number_of_days"/>
+                                                <td>
+                                                    <a t-attf-href="/web#id=#{leave.id}&amp;model=hr.leave&amp;view_type=form"
+                                                       class="btn btn-sm btn-outline-primary">Review</a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- ===== Employee Dashboard ===== -->
+                        <div t-else="" class="dayflow-section">
+                            <!-- Personal Cards Row -->
+                            <div class="dayflow-cards-row">
+                                <!-- Attendance Card -->
+                                <div class="dayflow-card card-attendance">
+                                    <div class="card-icon">📋</div>
+                                    <div class="card-value">
+                                        <t t-if="attendance_status == 'present'">
+                                            <span class="text-success fw-bold">Present</span>
+                                        </t>
+                                        <t t-elif="attendance_status == 'absent'">
+                                            <span class="text-danger fw-bold">Absent</span>
+                                        </t>
+                                        <t t-elif="attendance_status == 'half_day'">
+                                            <span class="text-warning fw-bold">Half-day</span>
+                                        </t>
+                                        <t t-elif="attendance_status == 'leave'">
+                                            <span class="text-info fw-bold">On Leave</span>
+                                        </t>
+                                    </div>
+                                    <div class="card-label">Today's Attendance</div>
+                                </div>
+
+                                <!-- Leave Card -->
+                                <div class="dayflow-card card-leave">
+                                    <div class="card-icon">🏖️</div>
+                                    <div class="card-value" t-esc="pending_leave_count"/>
+                                    <div class="card-label">Pending Leave Requests</div>
+                                    <div class="card-sub" t-if="approved_leave_count">
+                                        <t t-esc="approved_leave_count"/> approved
+                                    </div>
+                                </div>
+
+                                <!-- Payroll Card -->
+                                <div class="dayflow-card card-payroll">
+                                    <div class="card-icon">💰</div>
+                                    <div class="card-value">
+                                        <t t-if="net_salary">₹<t t-esc="'{:,.0f}'.format(net_salary)"/></t>
+                                        <t t-else="">₹—</t>
+                                    </div>
+                                    <div class="card-label">Net Salary</div>
+                                </div>
+                            </div>
+
+                            <!-- Recent Activity -->
+                            <div class="dayflow-panel" t-if="recent_activities">
+                                <h3 class="panel-title">Recent Activity</h3>
+                                <div class="activity-list">
+                                    <t t-foreach="recent_activities" t-as="activity">
+                                        <div t-attf-class="activity-item activity-#{activity['color']}">
+                                            <span class="activity-icon" t-esc="activity['icon']"/>
+                                            <span class="activity-text" t-esc="activity['text']"/>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <!-- Quick Actions -->
+                            <div class="dayflow-panel">
+                                <h3 class="panel-title">Quick Actions</h3>
+                                <div class="quick-actions">
+                                    <a href="/dayflow/attendance" class="btn dayflow-btn btn-attendance">
+                                        📋 Check Attendance
+                                    </a>
+                                    <a href="/dayflow/leave" class="btn dayflow-btn btn-leave">
+                                        🏖️ Apply Leave
+                                    </a>
+                                    <a t-if="employee" t-attf-href="/web#id=#{employee.id}&amp;model=hr.employee&amp;view_type=form"
+                                       class="btn dayflow-btn btn-profile">
+                                        👤 My Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </body>
+            </t>
+        </t>
+    </template>
+
+</odoo>

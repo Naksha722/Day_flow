@@ -16,6 +16,8 @@
         'views/auth_templates.xml',
         # --- samarth ---
         # --- naksha ---
+        'views/dashboard_menu.xml',
+        'views/dashboard_templates.xml',
     ],
     'application': True,
     'installable': True,
