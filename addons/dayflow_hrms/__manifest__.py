@@ -17,6 +17,8 @@
         'security/ir.model.access_security.csv',
         'views/auth_templates.xml',
         # --- samarth ---
+        'security/ir.model.access_samarth.csv',
+        'views/payroll_views.xml',
         # --- naksha ---
         'views/dashboard_menu.xml',
         'views/dashboard_templates.xml',
