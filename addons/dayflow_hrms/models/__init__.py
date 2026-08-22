@@ -1,1 +1,1 @@
-# model files will be added in later steps
+from . import res_users
