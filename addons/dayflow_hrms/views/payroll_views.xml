@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Payroll List View -->
+    <record id="view_payroll_list" model="ir.ui.view">
+        <field name="name">dayflow.payroll.list</field>
+        <field name="model">dayflow.payroll</field>
+        <field name="arch" type="xml">
+            <list string="Payroll">
+                <field name="employee_id"/>
+                <field name="month"/>
+                <field name="basic_salary" widget="monetary"/>
+                <field name="allowances" widget="monetary"/>
+                <field name="deductions" widget="monetary"/>
+                <field name="net_salary" widget="monetary"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Payroll Form View -->
+    <record id="view_payroll_form" model="ir.ui.view">
+        <field name="name">dayflow.payroll.form</field>
+        <field name="model">dayflow.payroll</field>
+        <field name="arch" type="xml">
+            <form string="Payroll">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="month"/>
+                        </group>
+                    </group>
+                    <group string="Salary Structure">
+                        <group>
+                            <field name="basic_salary" widget="monetary"/>
+                            <field name="allowances" widget="monetary"/>
+                        </group>
+                        <group>
+                            <field name="deductions" widget="monetary"/>
+                            <field name="net_salary" widget="monetary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Payroll Action -->
+    <record id="action_payroll" model="ir.actions.act_window">
+        <field name="name">Payroll</field>
+        <field name="res_model">dayflow.payroll</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Payroll Menu under Dayflow root -->
+    <menuitem id="menu_dayflow_payroll"
+              name="Payroll"
+              parent="dayflow_hrms.menu_dayflow_root"
+              action="action_payroll"
+              sequence="40"/>
+
+</odoo>
