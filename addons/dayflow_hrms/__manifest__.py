@@ -12,14 +12,15 @@
         'security/ir.model.access_avaneesh.csv',
         'views/attendance_views.xml',
         'views/leave_views.xml',
-        # --- demo data ---
-        'data/demo_data.xml',
         # --- lavanya ---
         'security/security_rules.xml',
         'security/ir.model.access_security.csv',
         'views/auth_templates.xml',
         # --- samarth ---
         # --- naksha ---
+    ],
+    'demo': [
+        'data/demo_data.xml',
     ],
     'application': True,
     'installable': True,

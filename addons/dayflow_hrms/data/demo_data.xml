@@ -2,187 +2,125 @@
 <odoo>
     <data noupdate="1">
 
-        <!-- ========== Departments ========== -->
-        <record id="dept_hr" model="hr.department">
-            <field name="name">Human Resources</field>
-        </record>
-        <record id="dept_engineering" model="hr.department">
-            <field name="name">Engineering</field>
-        </record>
-        <record id="dept_marketing" model="hr.department">
-            <field name="name">Marketing</field>
-        </record>
-        <record id="dept_finance" model="hr.department">
-            <field name="name">Finance</field>
-        </record>
-
-        <!-- ========== Jobs ========== -->
-        <record id="job_hr_manager" model="hr.job">
-            <field name="name">HR Manager</field>
-            <field name="department_id" ref="dept_hr"/>
-        </record>
-        <record id="job_dev" model="hr.job">
-            <field name="name">Software Developer</field>
-            <field name="department_id" ref="dept_engineering"/>
-        </record>
-        <record id="job_designer" model="hr.job">
-            <field name="name">UI/UX Designer</field>
-            <field name="department_id" ref="dept_engineering"/>
-        </record>
-        <record id="job_marketing_exec" model="hr.job">
-            <field name="name">Marketing Executive</field>
-            <field name="department_id" ref="dept_marketing"/>
-        </record>
-        <record id="job_accountant" model="hr.job">
-            <field name="name">Accountant</field>
-            <field name="department_id" ref="dept_finance"/>
-        </record>
-
-        <!-- ========== Users ========== -->
-
-        <!-- HR Admin User -->
-        <record id="user_hr_admin" model="res.users">
-            <field name="name">Priya Sharma</field>
-            <field name="login">hr@dayflow.com</field>
+        <!-- ===== HR/Admin user ===== -->
+        <record id="demo_user_hr" model="res.users">
+            <field name="name">Demo HR Admin</field>
+            <field name="login">hr@dayflow.demo</field>
+            <field name="email">hr@dayflow.demo</field>
             <field name="password">hr123</field>
-            <field name="email">hr@dayflow.com</field>
             <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_hr'))]"/>
         </record>
+        <record id="demo_employee_hr" model="hr.employee">
+            <field name="name">Demo HR Admin</field>
+            <field name="user_id" ref="demo_user_hr"/>
+        </record>
 
-        <!-- Employee Users -->
-        <record id="user_emp1" model="res.users">
-            <field name="name">Rahul Verma</field>
-            <field name="login">rahul@dayflow.com</field>
+        <!-- ===== 4 employees ===== -->
+        <record id="demo_user_emp1" model="res.users">
+            <field name="name">Employee One</field>
+            <field name="login">emp1@dayflow.demo</field>
+            <field name="email">emp1@dayflow.demo</field>
             <field name="password">emp123</field>
-            <field name="email">rahul@dayflow.com</field>
             <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
+        <record id="demo_employee_1" model="hr.employee">
+            <field name="name">Employee One</field>
+            <field name="user_id" ref="demo_user_emp1"/>
+        </record>
 
-        <record id="user_emp2" model="res.users">
-            <field name="name">Sneha Patel</field>
-            <field name="login">sneha@dayflow.com</field>
+        <record id="demo_user_emp2" model="res.users">
+            <field name="name">Employee Two</field>
+            <field name="login">emp2@dayflow.demo</field>
+            <field name="email">emp2@dayflow.demo</field>
             <field name="password">emp123</field>
-            <field name="email">sneha@dayflow.com</field>
             <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
+        <record id="demo_employee_2" model="hr.employee">
+            <field name="name">Employee Two</field>
+            <field name="user_id" ref="demo_user_emp2"/>
+        </record>
 
-        <record id="user_emp3" model="res.users">
-            <field name="name">Arjun Nair</field>
-            <field name="login">arjun@dayflow.com</field>
+        <record id="demo_user_emp3" model="res.users">
+            <field name="name">Employee Three</field>
+            <field name="login">emp3@dayflow.demo</field>
+            <field name="email">emp3@dayflow.demo</field>
             <field name="password">emp123</field>
-            <field name="email">arjun@dayflow.com</field>
             <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
+        <record id="demo_employee_3" model="hr.employee">
+            <field name="name">Employee Three</field>
+            <field name="user_id" ref="demo_user_emp3"/>
+        </record>
 
-        <record id="user_emp4" model="res.users">
-            <field name="name">Kavya Iyer</field>
-            <field name="login">kavya@dayflow.com</field>
+        <record id="demo_user_emp4" model="res.users">
+            <field name="name">Employee Four</field>
+            <field name="login">emp4@dayflow.demo</field>
+            <field name="email">emp4@dayflow.demo</field>
             <field name="password">emp123</field>
-            <field name="email">kavya@dayflow.com</field>
             <field name="groups_id" eval="[(4, ref('dayflow_hrms.group_dayflow_employee'))]"/>
         </record>
-
-        <!-- ========== Employees ========== -->
-
-        <record id="emp_hr_admin" model="hr.employee">
-            <field name="name">Priya Sharma</field>
-            <field name="user_id" ref="user_hr_admin"/>
-            <field name="job_id" ref="job_hr_manager"/>
-            <field name="department_id" ref="dept_hr"/>
-            <field name="work_email">hr@dayflow.com</field>
+        <record id="demo_employee_4" model="hr.employee">
+            <field name="name">Employee Four</field>
+            <field name="user_id" ref="demo_user_emp4"/>
         </record>
 
-        <record id="emp1" model="hr.employee">
-            <field name="name">Rahul Verma</field>
-            <field name="user_id" ref="user_emp1"/>
-            <field name="job_id" ref="job_dev"/>
-            <field name="department_id" ref="dept_engineering"/>
-            <field name="work_email">rahul@dayflow.com</field>
+        <!-- ===== Attendance: present / half-day / absent / present ===== -->
+        <!-- Employee 1: present today, full day -->
+        <record id="demo_attendance_1" model="hr.attendance">
+            <field name="employee_id" ref="demo_employee_1"/>
+            <field name="check_in" eval="datetime.datetime.now().replace(hour=9, minute=0, second=0)"/>
+            <field name="check_out" eval="datetime.datetime.now().replace(hour=18, minute=0, second=0)"/>
+        </record>
+        <!-- Employee 2: half-day (short hours) -->
+        <record id="demo_attendance_2" model="hr.attendance">
+            <field name="employee_id" ref="demo_employee_2"/>
+            <field name="check_in" eval="datetime.datetime.now().replace(hour=13, minute=0, second=0)"/>
+            <field name="check_out" eval="datetime.datetime.now().replace(hour=16, minute=0, second=0)"/>
+        </record>
+        <!-- Employee 3: absent (no attendance record) -->
+        <!-- Employee 4: present today -->
+        <record id="demo_attendance_4" model="hr.attendance">
+            <field name="employee_id" ref="demo_employee_4"/>
+            <field name="check_in" eval="datetime.datetime.now().replace(hour=9, minute=15, second=0)"/>
+            <field name="check_out" eval="datetime.datetime.now().replace(hour=17, minute=45, second=0)"/>
         </record>
 
-        <record id="emp2" model="hr.employee">
-            <field name="name">Sneha Patel</field>
-            <field name="user_id" ref="user_emp2"/>
-            <field name="job_id" ref="job_designer"/>
-            <field name="department_id" ref="dept_engineering"/>
-            <field name="work_email">sneha@dayflow.com</field>
-        </record>
-
-        <record id="emp3" model="hr.employee">
-            <field name="name">Arjun Nair</field>
-            <field name="user_id" ref="user_emp3"/>
-            <field name="job_id" ref="job_marketing_exec"/>
-            <field name="department_id" ref="dept_marketing"/>
-            <field name="work_email">arjun@dayflow.com</field>
-        </record>
-
-        <record id="emp4" model="hr.employee">
-            <field name="name">Kavya Iyer</field>
-            <field name="user_id" ref="user_emp4"/>
-            <field name="job_id" ref="job_accountant"/>
-            <field name="department_id" ref="dept_finance"/>
-            <field name="work_email">kavya@dayflow.com</field>
-        </record>
-
-        <!-- ========== Attendance Records (today) ========== -->
-
-        <!-- Rahul — Present (full day) -->
-        <record id="att_emp1_today" model="hr.attendance">
-            <field name="employee_id" ref="emp1"/>
-            <field name="check_in" eval="(DateTime.now() + relativedelta(hour=9, minute=15, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
-            <field name="check_out" eval="(DateTime.now() + relativedelta(hour=17, minute=30, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
-        </record>
-
-        <!-- Sneha — Present (half day worked) -->
-        <record id="att_emp2_today" model="hr.attendance">
-            <field name="employee_id" ref="emp2"/>
-            <field name="check_in" eval="(DateTime.now() + relativedelta(hour=10, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
-            <field name="check_out" eval="(DateTime.now() + relativedelta(hour=14, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
-        </record>
-
-        <!-- Kavya — Half-day (checked in late, still here) -->
-        <record id="att_emp4_today" model="hr.attendance">
-            <field name="employee_id" ref="emp4"/>
-            <field name="check_in" eval="(DateTime.now() + relativedelta(hour=13, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
-        </record>
-
-        <!-- ========== Leave Requests ========== -->
-
-        <!-- Arjun — Approved leave (sick, today) -->
-        <record id="leave_emp3_approved" model="hr.leave">
-            <field name="employee_id" ref="emp3"/>
-            <field name="name">Doctor appointment</field>
-            <field name="request_date_from" eval="DateTime.now().strftime('%Y-%m-%d')"/>
-            <field name="request_date_to" eval="DateTime.now().strftime('%Y-%m-%d')"/>
-            <field name="state">validate</field>
-        </record>
-
-        <!-- Rahul — Pending leave (paid, future) -->
-        <record id="leave_emp1_pending" model="hr.leave">
-            <field name="employee_id" ref="emp1"/>
+        <!-- ===== Leave requests: pending / approved / rejected ===== -->
+        <!-- Employee 1: pending leave -->
+        <record id="demo_leave_pending" model="hr.leave">
+            <field name="employee_id" ref="demo_employee_1"/>
             <field name="name">Family function</field>
-            <field name="request_date_from" eval="(DateTime.now() + relativedelta(days=3)).strftime('%Y-%m-%d')"/>
-            <field name="request_date_to" eval="(DateTime.now() + relativedelta(days=4)).strftime('%Y-%m-%d')"/>
+            <field name="request_date_from" eval="(DateTime.today() + timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="request_date_to" eval="(DateTime.today() + timedelta(days=4)).strftime('%Y-%m-%d')"/>
             <field name="state">confirm</field>
         </record>
-
-        <!-- Sneha — Rejected leave (unpaid, past) -->
-        <record id="leave_emp2_rejected" model="hr.leave">
-            <field name="employee_id" ref="emp2"/>
-            <field name="name">Personal trip</field>
-            <field name="request_date_from" eval="(DateTime.now() + relativedelta(days=-5)).strftime('%Y-%m-%d')"/>
-            <field name="request_date_to" eval="(DateTime.now() + relativedelta(days=-3)).strftime('%Y-%m-%d')"/>
+        <!-- Employee 2: approved leave (past) -->
+        <record id="demo_leave_approved" model="hr.leave">
+            <field name="employee_id" ref="demo_employee_2"/>
+            <field name="name">Fever</field>
+            <field name="request_date_from" eval="(DateTime.today() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="request_date_to" eval="(DateTime.today() - timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="state">validate</field>
+        </record>
+        <!-- Employee 3: rejected leave -->
+        <record id="demo_leave_rejected" model="hr.leave">
+            <field name="employee_id" ref="demo_employee_3"/>
+            <field name="name">Extended personal trip</field>
+            <field name="request_date_from" eval="(DateTime.today() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="request_date_to" eval="(DateTime.today() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
             <field name="state">refuse</field>
         </record>
 
-        <!-- Kavya — Approved leave (tomorrow) -->
-        <record id="leave_emp4_approved" model="hr.leave">
-            <field name="employee_id" ref="emp4"/>
-            <field name="name">Work from home</field>
-            <field name="request_date_from" eval="(DateTime.now() + relativedelta(days=1)).strftime('%Y-%m-%d')"/>
-            <field name="request_date_to" eval="(DateTime.now() + relativedelta(days=1)).strftime('%Y-%m-%d')"/>
-            <field name="state">validate</field>
+        <!-- ===== Payroll: add once Samarth's dayflow.payroll model is merged ===== -->
+        <!--
+        <record id="demo_payroll_1" model="dayflow.payroll">
+            <field name="employee_id" ref="demo_employee_1"/>
+            <field name="basic_salary">45000</field>
+            <field name="allowances">5000</field>
+            <field name="deductions">2000</field>
+            <field name="month">August 2026</field>
         </record>
+        -->
 
     </data>
 </odoo>
