@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 class DayflowAuthSignup(AuthSignupHome):
 
-    @http.route()
+    @http.route(csrf=False)
     def web_login(self, *args, **kwargs):
         if request.httprequest.method == 'POST':
             login = (request.params.get('login') or '').strip()

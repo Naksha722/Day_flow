@@ -37,4 +37,18 @@
         <field name="groups" eval="[(4, ref('group_dayflow_hr'))]"/>
         <field name="domain_force">[(1, '=', 1)]</field>
     </record>
+
+    <!-- hr.version (Employee Contract) — bypass multi-company rules -->
+    <record id="rule_dayflow_employee_own_version" model="ir.rule">
+        <field name="name">Dayflow employee: own version records</field>
+        <field name="model_id" ref="hr.model_hr_version"/>
+        <field name="groups" eval="[(4, ref('group_dayflow_employee'))]"/>
+        <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+    </record>
+    <record id="rule_dayflow_hr_all_version" model="ir.rule">
+        <field name="name">Dayflow HR: all version records</field>
+        <field name="model_id" ref="hr.model_hr_version"/>
+        <field name="groups" eval="[(4, ref('group_dayflow_hr'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
 </odoo>

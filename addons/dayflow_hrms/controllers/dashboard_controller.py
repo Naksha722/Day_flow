@@ -13,6 +13,10 @@ class DayflowDashboard(http.Controller):
         user = request.env.user
         employee = user.employee_id
 
+        # Fallback: find employee by user_id link if employee_id returns empty
+        if not employee:
+            employee = request.env['hr.employee'].search([('user_id', '=', user.id)], limit=1)
+
         is_hr = user.has_group('dayflow_hrms.group_dayflow_hr')
 
         values = self._get_employee_dashboard_values(employee)

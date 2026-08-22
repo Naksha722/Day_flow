@@ -15,7 +15,7 @@
 
                 <div class="dayflow-greeting">
                     Good morning<t t-if="employee">, <t t-esc="employee.name"/></t> 👋
-                    <span t-if="is_hr and not viewing_other_employee" class="dayflow-hr-badge">HR view</span>
+                    <span t-if="is_hr" class="dayflow-hr-badge">HR view</span>
                 </div>
 
                 <!-- ===================== Personal cards ===================== -->
@@ -54,9 +54,9 @@
                 <div class="dayflow-section">
                     <div class="dayflow-section-title">Quick Actions</div>
                     <div class="dayflow-actions">
-                        <a class="dayflow-btn" href="/odoo/attendances">Check Attendance</a>
-                        <a class="dayflow-btn" href="/odoo/time-off/new">Apply Leave</a>
-                        <a class="dayflow-btn" href="/odoo/employees/my-profile">My Profile</a>
+                        <a class="dayflow-btn" href="/web#action=dayflow_hrms.action_dayflow_my_attendance">Check Attendance</a>
+                        <a class="dayflow-btn" href="/web#action=dayflow_hrms.action_dayflow_my_leave">Apply Leave</a>
+                        <a class="dayflow-btn" href="/web#model=hr.employee&amp;view_type=kanban">My Profile</a>
                         <a class="dayflow-btn dayflow-btn-refresh" href="/dayflow/dashboard">↻ Refresh</a>
                     </div>
                 </div>

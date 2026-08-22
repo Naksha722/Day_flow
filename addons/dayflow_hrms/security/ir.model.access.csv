@@ -5,3 +5,5 @@ access_hr_leave_dayflow_employee,hr.leave.dayflow.employee,hr_holidays.model_hr_
 access_hr_leave_dayflow_hr,hr.leave.dayflow.hr,hr_holidays.model_hr_leave,dayflow_hrms.group_dayflow_hr,1,1,1,1
 access_dayflow_payroll_employee,dayflow.payroll.employee,model_dayflow_payroll,dayflow_hrms.group_dayflow_employee,1,0,0,0
 access_dayflow_payroll_hr,dayflow.payroll.hr,model_dayflow_payroll,dayflow_hrms.group_dayflow_hr,1,1,1,1
+access_hr_version_dayflow_employee,hr.version.dayflow.employee,hr.model_hr_version,dayflow_hrms.group_dayflow_employee,1,0,0,0
+access_hr_version_dayflow_hr,hr.version.dayflow.hr,hr.model_hr_version,dayflow_hrms.group_dayflow_hr,1,1,1,1

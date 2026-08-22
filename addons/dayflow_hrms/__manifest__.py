@@ -21,7 +21,6 @@
         # --- naksha ---
         'views/dashboard_menu.xml',
         'views/dashboard_templates.xml',
-        'data/demo_data.xml',
     ],
     'application': True,
     'installable': True,
