@@ -1,0 +1,31 @@
+<odoo>
+    <template id="dayflow_signup_fields" inherit_id="auth_signup.signup">
+        <xpath expr="//t[@t-call='auth_signup.fields']" position="after">
+            <div class="mb-3 field-employee-code">
+                <label for="x_employee_code">Employee ID</label>
+                <input type="text" name="x_employee_code" id="x_employee_code"
+                       class="form-control" required="required"
+                       t-att-value="x_employee_code"/>
+            </div>
+            <div class="mb-3 field-dayflow-role">
+                <label for="dayflow_role">Role</label>
+                <select name="dayflow_role" id="dayflow_role" class="form-select" required="required">
+                    <option value="employee" t-att-selected="dayflow_role == 'employee'">Employee</option>
+                    <option value="hr" t-att-selected="dayflow_role == 'hr'">HR / Admin</option>
+                </select>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="verification_result" name="Dayflow email verification">
+        <t t-call="web.login_layout">
+            <div class="oe_login_form">
+                <div t-attf-class="alert #{'alert-success' if success else 'alert-danger'}" role="alert">
+                    <t t-esc="message"/>
+                </div>
+                <a t-if="success" class="btn btn-primary w-100" href="/web/login">Sign in</a>
+                <a t-else="" class="btn btn-secondary w-100" href="/web/login">Back to sign in</a>
+            </div>
+        </t>
+    </template>
+</odoo>
