@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_dayflow_root" name="Dayflow" sequence="1" web_icon="dayflow_hrms,static/description/icon.png"/>
+    <menuitem id="menu_dayflow_root" name="Dayflow" sequence="1"/>
 </odoo>

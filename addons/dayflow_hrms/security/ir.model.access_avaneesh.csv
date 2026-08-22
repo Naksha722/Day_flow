@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_attendance_dayflow_employee,hr.attendance.dayflow.employee,hr_attendance.model_hr_attendance,dayflow_hrms.group_dayflow_employee,1,1,1,0
+access_hr_attendance_dayflow_hr,hr.attendance.dayflow.hr,hr_attendance.model_hr_attendance,dayflow_hrms.group_dayflow_hr,1,1,1,1
+access_hr_leave_dayflow_employee,hr.leave.dayflow.employee,hr_holidays.model_hr_leave,dayflow_hrms.group_dayflow_employee,1,1,1,0
+access_hr_leave_dayflow_hr,hr.leave.dayflow.hr,hr_holidays.model_hr_leave,dayflow_hrms.group_dayflow_hr,1,1,1,1
