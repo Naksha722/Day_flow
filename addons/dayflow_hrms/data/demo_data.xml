@@ -62,18 +62,18 @@
         <!-- ===== Attendance ===== -->
         <record id="demo_attendance_1" model="hr.attendance">
             <field name="employee_id" ref="demo_employee_1"/>
-            <field name="check_in" eval="datetime.datetime.now().replace(hour=9, minute=0, second=0)"/>
-            <field name="check_out" eval="datetime.datetime.now().replace(hour=18, minute=0, second=0)"/>
+            <field name="check_in" eval="datetime.now().replace(hour=9, minute=0, second=0)"/>
+            <field name="check_out" eval="datetime.now().replace(hour=18, minute=0, second=0)"/>
         </record>
         <record id="demo_attendance_2" model="hr.attendance">
             <field name="employee_id" ref="demo_employee_2"/>
-            <field name="check_in" eval="datetime.datetime.now().replace(hour=13, minute=0, second=0)"/>
-            <field name="check_out" eval="datetime.datetime.now().replace(hour=16, minute=0, second=0)"/>
+            <field name="check_in" eval="datetime.now().replace(hour=13, minute=0, second=0)"/>
+            <field name="check_out" eval="datetime.now().replace(hour=16, minute=0, second=0)"/>
         </record>
         <record id="demo_attendance_4" model="hr.attendance">
             <field name="employee_id" ref="demo_employee_4"/>
-            <field name="check_in" eval="datetime.datetime.now().replace(hour=9, minute=15, second=0)"/>
-            <field name="check_out" eval="datetime.datetime.now().replace(hour=17, minute=45, second=0)"/>
+            <field name="check_in" eval="datetime.now().replace(hour=9, minute=15, second=0)"/>
+            <field name="check_out" eval="datetime.now().replace(hour=17, minute=45, second=0)"/>
         </record>
 
         <!-- ===== Leave requests ===== -->
